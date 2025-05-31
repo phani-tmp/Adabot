@@ -5,13 +5,14 @@ body, html {
   background-color: #0d0d0d;
   color: white;
   font-family: Arial, sans-serif;
-  overflow-y: hidden;
+  
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
-  
+  height:100vh;
+  overflow: hidden;
   width: 100vw;
   padding: 20px;
   box-sizing: border-box;
