@@ -1,7 +1,6 @@
 body, html {
   margin: 0;
   padding: 0;
-  
   width: 100%;
   background-color: #0d0d0d;
   color: white;
@@ -148,7 +147,9 @@ body, html {
     max-width: 90%;
     font-size: 14px;
   }
-
+  .chat-area{
+    width: 90%;
+  }
   .clear-button {
     padding: 5px 10px;
     font-size: 12px;
