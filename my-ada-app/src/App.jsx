@@ -135,7 +135,7 @@ const App = () => {
           active: <b>{model}</b> <span className="subtext">general purpose</span>
         </span>
       </div>
-
+      <div class="main-content">
       <div className="chat-area">
         {messages.map((msg, idx) => (
           <div key={idx} className={`chat-bubble ${msg.role}`}>
@@ -171,6 +171,7 @@ const App = () => {
         <button className="clear-button" onClick={handleClear}>
           Clear Chat
         </button>
+      </div>
       </div>
     </div>
   );

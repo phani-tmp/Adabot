@@ -177,7 +177,13 @@ body, html {
     margin-top: 10px;
     gap: 8px;
   }
-  
+  .main-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;        /* 📌 Fills the rest of screen after header */
+  overflow: hidden;
+}
+
   .input-section input {
     padding: 12px;
     font-size: 14px;
