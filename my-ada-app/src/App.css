@@ -151,7 +151,7 @@ body, html {
   }
   
   .app-container {
-    height: 85vh;
+    height: 80vh;
     width: 98vw;
     padding: 10px; /* Reduced padding for mobile */
     overflow: hidden;
