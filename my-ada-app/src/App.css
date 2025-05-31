@@ -144,15 +144,15 @@ body, html {
 /* Mobile responsiveness */
 @media (max-width: 600px) {
   body, html {
-    height: 90vh;
-    width: 90vw;
+    height: 93vh;
+    width: 93vw;
     overflow: hidden; /* Prevent any scrolling on body */
     position: fixed; /* This prevents any overflow */
   }
   
   .app-container {
-    height: 90vh;
-    width: 90vw;
+    height: 93vh;
+    width: 93vw;
     padding: 10px; /* Reduced padding for mobile */
     overflow: hidden;
   }
