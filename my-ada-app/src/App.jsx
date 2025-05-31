@@ -33,50 +33,55 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <div className="header">
-        <span className="active-dot"></span>
-        <span>
-          active: <b>{model}</b> <span className="subtext">general purpose</span>
-        </span>
-      </div>
 
-      <div className="chat-area">
-        {messages.map((msg, idx) => (
-          <div key={idx} className={`chat-bubble ${msg.role}`}>
-            {msg.content}
-          </div>
-        ))}
-        <div ref={chatEndRef} />
-      </div>
 
-      <div className="input-section">
-        <input
-          type="text"
-          placeholder="Ask anything"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-        />
-        <button onClick={handleSend}>➤</button>
-      </div>
-
-      <div className="footer">
-        <div className="model-select">
-          Select model:
-          <select value={model} onChange={(e) => setModel(e.target.value)}>
-            {models.map((m) => (
-              <option key={m} value={m}>
-                {m}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <button className="clear-button" onClick={handleClear}>
-          Clear Chat
-        </button>
-      </div>
+    <div className="header">
+      <span className="active-dot"></span>
+      <span>
+        active: <b>{model}</b> <span className="subtext">general purpose</span>
+      </span>
     </div>
+
+    <div className="chat-area">
+      {messages.map((msg, idx) => (
+        <div key={idx} className={`chat-bubble ${msg.role}`}>
+          {msg.content}
+        </div>
+      ))}
+      <div ref={chatEndRef} />
+    </div>
+
+    <div className="input-section">
+      <input
+        type="text"
+        placeholder="Ask anything"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+      />
+      <button onClick={handleSend}>➤</button>
+    </div>
+
+    <div className="footer">
+      <div className="model-select">
+        Select model:
+        <select value={model} onChange={(e) => setModel(e.target.value)}>
+          {models.map((m) => (
+            <option key={m} value={m}>
+              {m}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <button className="clear-button" onClick={handleClear}>
+        Clear Chat
+      </button>
+    </div>
+
+  
+</div>
+
   );
 };
 
