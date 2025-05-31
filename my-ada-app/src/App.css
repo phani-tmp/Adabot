@@ -141,16 +141,23 @@ body, html {
 
 /* Mobile responsiveness */
 @media (max-width: 600px) {
-  .app-container{
-    height:90vh;
+  .app-container {
+    height: 100vh; /* Use full viewport height */
+    overflow: hidden; /* Prevent container scrolling */
+    padding-bottom: 0; /* Remove extra padding */
   }
+  
+  .chat-area {
+    flex: 1; /* Take all available space */
+    overflow-y: auto; /* Allow scrolling just for chat */
+  }
+  
+  /* Keep your existing mobile styles */
   .chat-bubble {
     max-width: 90%;
     font-size: 14px;
   }
-  .chat-area{
-    width: 90%;
-  }
+  /* ... other mobile styles ... */
   .clear-button {
     padding: 5px 10px;
     font-size: 12px;
