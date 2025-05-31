@@ -140,30 +140,52 @@ body, html {
   
 }
 
+
 /* Mobile responsiveness */
-@media (max-width: 600px) { 
-  body,html{
-    height:90vh;
-    width:100vw;
-    
+@media (max-width: 600px) {
+  body, html {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Prevent any scrolling on body */
+    position: fixed; /* This prevents any overflow */
   }
+  
   .app-container {
-    height: 80vh; /* Use full viewport height */
-    overflow: hidden; /* Prevent container scrolling */
-    padding-bottom: 0; /* Remove extra padding */
+    height: 100vh;
+    width: 100vw;
+    padding: 10px; /* Reduced padding for mobile */
+    overflow: hidden;
   }
   
   .chat-area {
-    flex: 1; /* Take all available space */
-    overflow-y: auto; /* Allow scrolling just for chat */
+    width: 100%; /* Full width */
+    padding: 15px; /* Slightly reduced padding */
+    margin: 0; /* Remove any margins causing overflow */
+    box-sizing: border-box; /* Include padding in width calculation */
   }
   
-  /* Keep your existing mobile styles */
   .chat-bubble {
-    max-width: 90%;
+    max-width: 95%; /* Slightly more width for better use of space */
+    font-size: 14px;
+    padding: 10px 12px; /* Slightly reduced padding */
+  }
+  
+  .input-section {
+    margin-top: 10px;
+    gap: 8px;
+  }
+  
+  .input-section input {
+    padding: 12px;
     font-size: 14px;
   }
-  /* ... other mobile styles ... */
+  
+  .input-section button {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+  
   .clear-button {
     padding: 5px 10px;
     font-size: 12px;
