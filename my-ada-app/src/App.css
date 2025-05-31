@@ -1,7 +1,7 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  
   width: 100%;
   background-color: #0d0d0d;
   color: white;
@@ -12,7 +12,7 @@ body, html {
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  
   width: 100vw;
   padding: 20px;
   box-sizing: border-box;
@@ -134,11 +134,16 @@ body, html {
 @media (min-width: 900px) {
   .app-container {
     padding: 20px 40px;
+   height:100vh;
   }
+  
 }
 
 /* Mobile responsiveness */
 @media (max-width: 600px) {
+  .app-container{
+    height:90vh;
+  }
   .chat-bubble {
     max-width: 90%;
     font-size: 14px;
