@@ -144,7 +144,7 @@ body, html {
 /* Mobile responsiveness */
 @media (max-width: 600px) {
   body, html {
-    height: 96vh;
+    height: 100vh;
     width: 96vw;
     overflow: hidden; /* Prevent any scrolling on body */
     position: fixed; /* This prevents any overflow */
