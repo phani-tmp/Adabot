@@ -142,7 +142,7 @@ body, html {
 /* Mobile responsiveness */
 @media (max-width: 600px) {
   .app-container {
-    height: 100vh; /* Use full viewport height */
+    height: 80vh; /* Use full viewport height */
     overflow: hidden; /* Prevent container scrolling */
     padding-bottom: 0; /* Remove extra padding */
   }
