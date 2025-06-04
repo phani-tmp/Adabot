@@ -783,11 +783,19 @@ body, html {
 /* ======================== Mobile Fixes ======================== */
 @media (max-width: 768px) {
   .chat-box {
-    padding: 16px;
-    height: 90vh;
-    width: 100%;
-    border-radius: 0;
-  }
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 24px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 90vh;
+  position: relative;
+  overflow: hidden;
+}
 
   .chat-actions {
     flex-direction: column;
