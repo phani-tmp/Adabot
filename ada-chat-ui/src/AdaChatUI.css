@@ -224,10 +224,10 @@ body, html {
   }
 } */
 
-
+/*====++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /* AdaChatUI.css */
 
-body, html {
+/* body, html {
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -478,7 +478,7 @@ body, html {
     font-size: 13px;
   }
 }      
-/*====++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
 
 .dropdown button {
   display: flex;
@@ -528,4 +528,286 @@ body, html {
   width: 55px;
   height: 55px;
   object-fit: contain;
+} */
+
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.ada-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  padding: 16px;
+}
+
+.status-bar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1002;
+  font-size: 17px;
+  background: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+
+.active {
+  color: green;
+  font-weight: bold;
+}
+
+.model-name {
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.model-type {
+  color: gray;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.chat-box {
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 720px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 90vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-scroll {
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-right: 4px;
+  z-index: 1;
+}
+
+.chat-msg h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.chat-msg p {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #dddddd;
+}
+
+.chat-divider {
+  border: none;
+  border-top: 1px solid #555;
+  margin: 12px 0;
+}
+
+.chat-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.chat-input {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 16px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: white;
+  background-color: #2b2b2b;
+  box-sizing: border-box;
+}
+
+.chat-input::placeholder {
+  color: #aaa;
+  font-size: 15px;
+}
+
+.chat-input.large-placeholder::placeholder {
+  font-size: 22px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.chat-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.upload-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px;
+}
+
+/* ======================== Dropdown Styling ======================== */
+.dropdown {
+  position: relative;
+  z-index: 1000;
+}
+
+.dropdown button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 14px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  position: absolute;
+  left: 0;
+  background-color: #2e2e2e;
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  max-height: 300px;
+  overflow-y: auto;
+  top: 30px;
+}
+
+.dropdown-content.above {
+  bottom: 45px;
+  top: unset;
+}
+
+/* Model Option Radio Style */
+.model-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 15px;
+  color: white;
+}
+
+.model-option:hover {
+  background-color: #3a3a3a;
+  border-radius: 6px;
+}
+
+.big-radio {
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.big-radio.selected {
+  background-color: white;
+}
+
+/* ======================== Buttons ======================== */
+.clear-chat {
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.send-btn {
+  background: white;
+  color: black;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 20px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.send-btn:hover {
+  background-color: #e1e1e1;
+}
+
+.send-icon {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+/* ======================== Mobile Fixes ======================== */
+@media (max-width: 768px) {
+  .chat-box {
+    padding: 16px;
+    height: 90vh;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .chat-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dropdown-content {
+    min-width: 160px;
+    font-size: 13px;
+  }
+
+  .status-bar {
+    font-size: 15px;
+    padding: 6px 10px;
+  }
+
+  .send-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .dropdown-content.above {
+    bottom: 40px;
+  }
 }
