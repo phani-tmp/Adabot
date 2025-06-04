@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: white;
+  color: black;
+}
+
+.app {
+  padding: 20px;
+}
+
+.status {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.active {
+  color: green;
+  font-weight: bold;
+}
+
+.model {
+  font-weight: 500;
+}
+
+.purpose {
+  font-size: 12px;
+  color: gray;
+  margin-left: 5px;
+}
