@@ -597,7 +597,7 @@ body, html {
   gap: 16px;
   max-height: 90vh;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   margin-top: 35px;
   margin-bottom: 35px;
 }
@@ -710,7 +710,8 @@ body, html {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   z-index: 1001;
   max-height: 300px;
-  overflow-y: auto;
+  overflow: visible;
+  opacity:1;
   top: 30px;
 }
 
@@ -812,10 +813,10 @@ body, html {
   z-index: 2;
 }
 
-  .dropdown-content {
+  /* .dropdown-content {
     min-width: 160px;
     font-size: 13px;
-  }
+  } */
 
   .status-bar {
     font-size: 15px;
@@ -870,7 +871,8 @@ body, html {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   z-index: 1001;
   max-height: 300px;
-  overflow-y: auto;
+  overflow: visible;
+  opacity:1;
   top: 30px;
 }
 
