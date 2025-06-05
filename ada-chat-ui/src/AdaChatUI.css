@@ -910,3 +910,29 @@ body, html {
 }
 
 }
+/* Add this to your mobile media query */
+@media (max-width: 768px) {
+  .dropdown-content {
+    position: fixed;
+    bottom: 80px; /* Adjust based on your input height */
+    left: 20px;
+    right: 20px;
+    width: auto;
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+  
+  .dropdown-content.above {
+    bottom: auto;
+    top: 120px; /* Adjust based on your header height */
+  }
+  
+  /* Add this new class */
+  .chat-box.tall .dropdown-content {
+    display: none;
+  }
+  
+  .chat-box:not(.tall) .dropdown-content {
+    display: block;
+  }
+}
