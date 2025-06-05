@@ -910,29 +910,34 @@ body, html {
 }
 
 }
-/* Add this to your mobile media query */
 @media (max-width: 768px) {
+  .dropdown {
+    position: relative;
+    display: inline-block; /* Makes width follow content */
+  }
+
   .dropdown-content {
-    position: fixed;
-    bottom: 80px; /* Adjust based on your input height */
-    left: 20px;
-    right: 20px;
-    width: auto;
+    position: absolute;
+    width: auto; /* Content-based width */
+    min-width: 180px; /* Minimum width */
+    max-width: 260px; /* Maximum width before wrap */
+    left: 0;
     max-height: 40vh;
     overflow-y: auto;
+    z-index: 1002;
+    white-space: nowrap; /* Prevent text wrapping */
   }
-  
+
   .dropdown-content.above {
-    bottom: auto;
-    top: 120px; /* Adjust based on your header height */
+    bottom: 100%; /* Positions above button */
+    top: auto;
   }
-  
-  /* Add this new class */
-  .chat-box.tall .dropdown-content {
-    display: none;
-  }
-  
-  .chat-box:not(.tall) .dropdown-content {
-    display: block;
+
+  /* Model option text truncation */
+  .model-option span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    display: inline-block;
   }
 }
