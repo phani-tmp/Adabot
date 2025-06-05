@@ -911,33 +911,54 @@ body, html {
 
 }
 @media (max-width: 768px) {
+  /* Fix parent containers */
+  .chat-box {
+    overflow: visible; /* Allow dropdown to escape */
+  }
+
+  .chat-actions {
+    position: relative;
+    z-index: 1000;
+    overflow: visible; /* Critical for dropdown */
+  }
+
+  /* Dropdown styles */
   .dropdown {
     position: relative;
-    display: inline-block; /* Makes width follow content */
+    display: inline-block;
   }
 
   .dropdown-content {
     position: absolute;
-    width: auto; /* Content-based width */
-    min-width: 180px; /* Minimum width */
-    max-width: 260px; /* Maximum width before wrap */
+    width: max-content;
+    min-width: 180px;
+    max-width: 260px;
     left: 0;
-    max-height: 40vh;
+    max-height: 50vh;
     overflow-y: auto;
-    z-index: 1002;
-    white-space: nowrap; /* Prevent text wrapping */
+    z-index: 1001;
+    background: #2e2e2e;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    margin-top: 5px; /* Space from button */
   }
 
   .dropdown-content.above {
-    bottom: 100%; /* Positions above button */
+    bottom: calc(100% + 8px);
     top: auto;
   }
 
-  /* Model option text truncation */
+  /* Model options */
+  .model-option {
+    white-space: nowrap;
+  }
+  
   .model-option span {
+    display: inline-block;
+    max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 200px;
-    display: inline-block;
+    vertical-align: middle;
   }
 }
