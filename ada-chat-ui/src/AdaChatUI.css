@@ -2020,7 +2020,7 @@ body, html {
 
   .status-bar .model-type {
     margin-top: 4px; 
-    margin-left:25px;/* Small space between lines */
+    margin-left:35px;/* Small space between lines */
   }
 
   /* HR Line - No Gap */
@@ -2047,7 +2047,8 @@ body, html {
     justify-content: center;
     align-items: center;
     gap: 30px;
-    
+    margin-top: 0 !important;
+    margin-right:15vw;
   }
 
   .phani2 {
@@ -2055,16 +2056,16 @@ body, html {
   }
   
   .send-icon {
-    width: 60px;
+    width: 70px !important;
     height: 60px;
   }
 
   .send-btn {
     width: 40px;
-    height: 35px;
+    height: 40px;
   }
   .clear-chat{
-    color:#2b2b2b !important;
+    color:#444 !important;
     font-weight: 700 !important;
     font-size: 16px !important;
   }

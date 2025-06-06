@@ -977,8 +977,9 @@ return (
         <div className="top-bar-container">
       <div className="status-bar">
         <div className="sleft">
-          <span className="active">active:</span>
-          <span className="model-name">{selectedModel}</span>
+          <span className="active">active: </span>
+          
+          <span className="model-name"> {selectedModel}</span>
         </div>
         <div className="model-type">
           {modelOptions.find(m => m.name === selectedModel)?.tag}
@@ -1091,7 +1092,7 @@ return (
               
               <button className="send-btn" onClick={handleSend}>
                 <img
-                  src="https://i.postimg.cc/QxKysb9H/image.png"
+                  src="https://i.postimg.cc/k5T3JYjF/Arrow-direction-gps-location-map-icon-Download-on-Iconfinder.jpg"
                   alt="Send"
                   className="send-icon"
                 />
