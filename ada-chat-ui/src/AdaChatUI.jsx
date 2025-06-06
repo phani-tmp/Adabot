@@ -794,7 +794,7 @@
 
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Plus, ChevronDown, Trash2 } from 'lucide-react';
+import { Plus} from 'lucide-react';
 import './AdaChatUI.css';
 
 const DottedBoxIcon = () => (
@@ -823,7 +823,7 @@ export default function AdaChatUI() {
   const fileInputRef = useRef(null);
   const chatContainerRef = useRef(null);
   const dropdownRef = useRef(null);
-  const [isFocused, setIsFocused] = useState(false);
+ 
   const [inputFocused, setInputFocused] = useState(false);
   const [resetRequested, setResetRequested] = useState(false);
   const handleClear = () => {
