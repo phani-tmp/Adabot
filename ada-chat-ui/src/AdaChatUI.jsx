@@ -974,6 +974,7 @@ export default function AdaChatUI() {
 
 return (
     <div className="ada-wrapper">
+        <div className="top-bar-container">
       <div className="status-bar">
         <div className="sleft">
           <span className="active">active:</span>
@@ -982,8 +983,12 @@ return (
         <div className="model-type">
           {modelOptions.find(m => m.name === selectedModel)?.tag}
         </div>
+        
       </div>
-
+     
+            <hr className="phani4" />
+        
+        </div>
       <div className="chat-box">
         <div className="chat-scroll" ref={chatContainerRef}>
           {chatHistory.map((msg, index) => (
@@ -1078,9 +1083,23 @@ return (
                 />
               </button>
             </div>
+            
           </div>
         </div>
       </div>
+      <div className="phani3">
+              
+              <button className="send-btn" onClick={handleSend}>
+                <img
+                  src="https://i.postimg.cc/QxKysb9H/image.png"
+                  alt="Send"
+                  className="send-icon"
+                />
+              </button>
+              <button className="clear-chat" onClick={handleClear}>
+                Clear Chat
+              </button>
+            </div>
     </div>
   );
 }
