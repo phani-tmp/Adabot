@@ -656,11 +656,146 @@
 //   );
 // }
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// import React, { useState, useRef, useEffect } from 'react';
+// import './AdaChatUI.css';
+// import { Plus, ChevronDown, Trash2 } from 'lucide-react';
+
+// const DottedBoxIcon = () => (
+//   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
+//     <rect x="2" y="2" width="10" height="10" rx="2" ry="2" strokeDasharray="3 2" />
+//     <rect x="6" y="6" width="10" height="10" rx="2" ry="2" strokeDasharray="3 2" />
+//   </svg>
+// );
+
+// const modelOptions = [
+//   { name: 'Llama 2 7 B', tag: 'general purpose' },
+//   { name: 'Mistral 7', tag: 'Balanced' },
+//   { name: 'Code Llama', tag: 'Programming' },
+//   { name: 'Qwen 1.8 B', tag: 'Reasoning' },
+//   { name: 'more models...', tag: '' }
+// ];
+
+// export default function AdaChatUI() {
+//   const [message, setMessage] = useState('');
+//   const [selectedModel, setSelectedModel] = useState('Llama 2 7 B');
+//   const [showDropdown, setShowDropdown] = useState(false);
+//   const [isAbove, setIsAbove] = useState(false);
+//   const [chatHistory, setChatHistory] = useState([]);
+//   const fileInputRef = useRef(null);
+//   const chatContainerRef = useRef(null);
+//   const dropdownRef = useRef(null);
+
+//   const handleSend = () => {
+//     if (!message.trim()) return;
+//     setChatHistory([...chatHistory, { question: message, answer: '...' }]);
+//     setMessage('');
+//   };
+
+//   const handleKeyDown = (e) => {
+//     if (e.key === 'Enter') handleSend();
+//   };
+
+//   const handleClear = () => setChatHistory([]);
+
+//   const handleUploadClick = () => fileInputRef.current.click();
+
+//   useEffect(() => {
+//     if (chatContainerRef.current) {
+//       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+//     }
+//   }, [chatHistory]);
+
+//   useEffect(() => {
+//     const checkDropdownPosition = () => {
+//       if (!dropdownRef.current) return;
+//       const rect = dropdownRef.current.getBoundingClientRect();
+//       const spaceBelow = window.innerHeight - rect.bottom;
+//       const estimatedHeight = 220;
+//       setIsAbove(spaceBelow < estimatedHeight);
+//     };
+
+//     if (showDropdown) {
+//       checkDropdownPosition();
+//     }
+//   }, [showDropdown]);
+
+//   return (
+//     <div className="ada-wrapper">
+//       <div className="status-bar">
+//         <span className="active">active:</span>
+//         <span className="model-name">{selectedModel}</span>
+//         <span className="model-type">{modelOptions.find(m => m.name === selectedModel)?.tag}</span>
+//       </div>
+
+//       <div className="chat-box">
+//         <div className="chat-scroll" ref={chatContainerRef}>
+//           {chatHistory.map((msg, index) => (
+//             <div className="chat-msg" key={index}>
+//               <h3>{msg.question}</h3>
+//               <hr className="chat-divider" />
+//               <p>{msg.answer}</p>
+//             </div>
+//           ))}
+//         </div>
+
+//         <div className="chat-input-container">
+//           <input
+//             className={`chat-input ${chatHistory.length === 0 ? 'large-placeholder' : ''}`}
+//             placeholder={chatHistory.length === 0 ? "I'm Ada, Ask me Anything" : "Ask anything"}
+//             value={message}
+//             onChange={(e) => setMessage(e.target.value)}
+//             onKeyDown={handleKeyDown}
+//           />
+
+//           <div className="chat-actions">
+//             <button className="upload-button" onClick={handleUploadClick}>
+//               <Plus size={16} />
+//             </button>
+//             <input type="file" ref={fileInputRef} style={{ display: 'none' }} />
+
+//             <div className="dropdown" ref={dropdownRef}>
+//               <button type="button" onClick={() => setShowDropdown(!showDropdown)}>
+//                 <DottedBoxIcon /> Select model <ChevronDown size={14} />
+//               </button>
+//               {showDropdown && (
+//                 <div className={`dropdown-content ${isAbove ? 'above' : ''}`}>
+//                   {modelOptions.map((model, idx) => (
+//                     <label key={idx} className="model-option" onClick={() => {
+//                       setSelectedModel(model.name);
+//                       setShowDropdown(false);
+//                     }}>
+//                       <div className={`big-radio ${selectedModel === model.name ? 'selected' : ''}`} />
+//                       <span>{model.name}</span>
+//                     </label>
+//                   ))}
+//                 </div>
+//               )}
+//             </div>
+
+//             <button className="clear-chat" onClick={handleClear}>
+//               <Trash2 size={14} /> Clear Chat
+//             </button>
+
+//             <button className="send-btn" type="submit" onClick={handleSend}>
+//               <img
+//                 src="https://i.postimg.cc/02fSf4Q2/send.png"
+//                 alt="Send"
+//                 className="send-icon"
+//               />
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 
 import React, { useState, useRef, useEffect } from 'react';
-import './AdaChatUI.css';
 import { Plus, ChevronDown, Trash2 } from 'lucide-react';
+import './AdaChatUI.css';
 
 const DottedBoxIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
@@ -678,6 +813,8 @@ const modelOptions = [
 ];
 
 export default function AdaChatUI() {
+  
+
   const [message, setMessage] = useState('');
   const [selectedModel, setSelectedModel] = useState('Llama 2 7 B');
   const [showDropdown, setShowDropdown] = useState(false);
@@ -686,19 +823,38 @@ export default function AdaChatUI() {
   const fileInputRef = useRef(null);
   const chatContainerRef = useRef(null);
   const dropdownRef = useRef(null);
-
+  const [isFocused, setIsFocused] = useState(false);
+  const [inputFocused, setInputFocused] = useState(false);
+  const [resetRequested, setResetRequested] = useState(false);
+  const handleClear = () => {
+  setResetRequested(true);
+};
+  useEffect(() => {
+  if (resetRequested) {
+    setChatHistory([]);
+    setMessage('');
+    setInputFocused(false);
+    setResetRequested(false);
+  }
+}, [resetRequested]);
   const handleSend = () => {
     if (!message.trim()) return;
-    setChatHistory([...chatHistory, { question: message, answer: '...' }]);
+    setChatHistory([...chatHistory, { question: message,
+          answer:
+      "Quantum gravity is a field of theoretical physics that seeks to unify general relativity, which describes gravity as the curvature of spacetime, with quantum mechanics, which governs the behavior of particles and forces at tiny scales. Because these two theories are fundamentally incompatible in extreme conditions like black holes and the early universe, quantum gravity aims to provide a single framework that accounts for quantum effects in the gravitational field, ultimately offering a more complete picture of the universe at both the smallest and largest scales."}])
     setMessage('');
   };
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') handleSend();
   };
+  
 
-  const handleClear = () => setChatHistory([]);
-
+//   const handleClear = () => {
+//         setChatHistory([]);
+//         setMessage('');
+//         setInputFocused(false); // Add this to reset focus state
+//         };
   const handleUploadClick = () => fileInputRef.current.click();
 
   useEffect(() => {
@@ -712,21 +868,120 @@ export default function AdaChatUI() {
       if (!dropdownRef.current) return;
       const rect = dropdownRef.current.getBoundingClientRect();
       const spaceBelow = window.innerHeight - rect.bottom;
-      const estimatedHeight = 220;
-      setIsAbove(spaceBelow < estimatedHeight);
+      setIsAbove(spaceBelow < 220);
     };
 
     if (showDropdown) {
       checkDropdownPosition();
+      const handler = (e) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+          setShowDropdown(false);
+        }
+      };
+      document.addEventListener('mousedown', handler);
+      return () => document.removeEventListener('mousedown', handler);
     }
   }, [showDropdown]);
+//   return (
+//   <div className="ada-wrapper">
+//     <div className="status-bar">
+//     <div className="sleft">
+//         <span className="active">active:</span>
+//         <span className="model-name">{selectedModel}</span>
+//     </div>
+//     <div className="model-type">
+//         {modelOptions.find(m => m.name === selectedModel)?.tag}
+//     </div>
+//     </div>
 
-  return (
+
+//     <div className="chat-box">
+//       <div className="chat-scroll" ref={chatContainerRef}>
+//         {chatHistory.map((msg, index) => (
+//           <div className="chat-msg" key={index}>
+//             <h3>{msg.question}</h3>
+//             <hr className="chat-divider" />
+//             <p>{msg.answer}</p>
+//           </div>
+//         ))}
+//       </div>
+
+//       <div className="chat-input-container">
+//         <input
+//           className={`chat-input ${chatHistory.length === 0 ? 'large-placeholder' : ''}`}
+//           placeholder={chatHistory.length === 0 ? "I'm Ada, Ask me Anything" : "Ask anything"}
+//           value={message}
+//           onChange={(e) => setMessage(e.target.value)}
+//           onKeyDown={handleKeyDown}
+//         />
+
+//         <div className="chat-actions">
+//           {/* LEFT SECTION */}
+//           <div className="phani1">
+//             <button className="upload-button" onClick={handleUploadClick}>
+//               <Plus size={16} />
+//             </button>
+//             <input type="file" ref={fileInputRef} style={{ display: 'none' }} />
+
+//             <div className="dropdown" ref={dropdownRef}>
+//               <button type="button" onClick={() => setShowDropdown(!showDropdown)}>
+//                 <DottedBoxIcon /> Select model 
+//               </button>
+
+//               {showDropdown && (
+//                 <div className={`dropdown-content ${isAbove ? 'above' : ''}`}>
+//                   {modelOptions.map((model, idx) => (
+//                     <label
+//                       key={idx}
+//                       className="model-option"
+//                       onClick={() => {
+//                         if (model.name !== 'more models...') {
+//                           setSelectedModel(model.name);
+//                           setShowDropdown(false);
+//                         }
+//                       }}
+//                     >
+//                       <div style={{ display: 'flex', alignItems: 'center' }}>
+//                         <div className={`big-radio ${selectedModel === model.name ? 'selected' : ''}`} />
+//                         <span>{model.name}</span>
+//                       </div>
+//                       {model.tag && <span className="model-tag">{model.tag}</span>}
+//                     </label>
+//                   ))}
+//                 </div>
+//               )}
+//             </div>
+//           </div>
+
+//           {/* RIGHT SECTION */}
+//           <div className="phani2">
+//             <button className="clear-chat" onClick={handleClear}>
+//               Clear Chat
+//             </button>
+//             <button className="send-btn" onClick={handleSend}>
+//               <img
+//                 src="https://i.postimg.cc/02fSf4Q2/send.png"
+//                 alt="Send"
+//                 className="send-icon"
+//               />
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// );
+
+return (
     <div className="ada-wrapper">
       <div className="status-bar">
-        <span className="active">active:</span>
-        <span className="model-name">{selectedModel}</span>
-        <span className="model-type">{modelOptions.find(m => m.name === selectedModel)?.tag}</span>
+        <div className="sleft">
+          <span className="active">active:</span>
+          <span className="model-name">{selectedModel}</span>
+        </div>
+        <div className="model-type">
+          {modelOptions.find(m => m.name === selectedModel)?.tag}
+        </div>
       </div>
 
       <div className="chat-box">
@@ -741,50 +996,88 @@ export default function AdaChatUI() {
         </div>
 
         <div className="chat-input-container">
-          <input
+          {/* <input
             className={`chat-input ${chatHistory.length === 0 ? 'large-placeholder' : ''}`}
             placeholder={chatHistory.length === 0 ? "I'm Ada, Ask me Anything" : "Ask anything"}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
-          />
+          /> */}
+          {/* <input
+            className={`chat-input ${message.length > 0 ? 'active' : ''}`}
+            placeholder="I'm Ada, Ask me Anything"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
+            />
+          
+          <hr className={`input-divider ${isFocused || message ? 'active' : ''}`} /> */}
+          <hr className={`top-divider ${inputFocused || message ? 'active' : 'inactive'}`} />
+          <input
+            className={`chat-input ${inputFocused || message ? 'active' : ''}`}
+            placeholder={inputFocused || message ? "Ask anything" : "I'm Ada, Ask me Anything"}
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
+            onFocus={() => setInputFocused(true)}
+            onBlur={() => !message && setInputFocused(false)}
+            />
+            
 
+            <hr className={`bottom-divider ${inputFocused || message ? 'active' : 'inactive'}`} />
           <div className="chat-actions">
-            <button className="upload-button" onClick={handleUploadClick}>
-              <Plus size={16} />
-            </button>
-            <input type="file" ref={fileInputRef} style={{ display: 'none' }} />
-
-            <div className="dropdown" ref={dropdownRef}>
-              <button type="button" onClick={() => setShowDropdown(!showDropdown)}>
-                <DottedBoxIcon /> Select model <ChevronDown size={14} />
+            {/* LEFT SECTION */}
+            <div className="phani1">
+              <button className="upload-button" onClick={handleUploadClick}>
+                <Plus size={16} />
               </button>
-              {showDropdown && (
-                <div className={`dropdown-content ${isAbove ? 'above' : ''}`}>
-                  {modelOptions.map((model, idx) => (
-                    <label key={idx} className="model-option" onClick={() => {
-                      setSelectedModel(model.name);
-                      setShowDropdown(false);
-                    }}>
-                      <div className={`big-radio ${selectedModel === model.name ? 'selected' : ''}`} />
-                      <span>{model.name}</span>
-                    </label>
-                  ))}
-                </div>
-              )}
+              <input type="file" ref={fileInputRef} style={{ display: 'none' }} />
+
+              <div className="dropdown" ref={dropdownRef}>
+                <button type="button" onClick={() => setShowDropdown(!showDropdown)}>
+                  <DottedBoxIcon /> Select model
+                </button>
+
+                {showDropdown && (
+                  <div className={`dropdown-content ${isAbove ? 'above' : ''}`}>
+                    {modelOptions.map((model, idx) => (
+                      <label
+                        key={idx}
+                        className="model-option"
+                        onClick={() => {
+                          if (model.name !== 'more models...') {
+                            setSelectedModel(model.name);
+                            setShowDropdown(false);
+                          }
+                        }}
+                      >
+                        <div className={`big-radio ${selectedModel === model.name ? 'selected' : ''}`} />
+                        <div className="model-labels">
+                          <span className="model-name-line">
+                            {model.name}
+                            {model.tag && <span className="model-tag">  {model.tag}</span>}
+                          </span>
+                        </div>
+                      </label>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
-            <button className="clear-chat" onClick={handleClear}>
-              <Trash2 size={14} /> Clear Chat
-            </button>
-
-            <button className="send-btn" type="submit" onClick={handleSend}>
-              <img
-                src="https://i.postimg.cc/02fSf4Q2/send.png"
-                alt="Send"
-                className="send-icon"
-              />
-            </button>
+            {/* RIGHT SECTION */}
+            <div className="phani2">
+              <button className="clear-chat" onClick={handleClear}>
+                Clear Chat
+              </button>
+              <button className="send-btn" onClick={handleSend}>
+                <img
+                  src="https://i.postimg.cc/02fSf4Q2/send.png"
+                  alt="Send"
+                  className="send-icon"
+                />
+              </button>
+            </div>
           </div>
         </div>
       </div>
