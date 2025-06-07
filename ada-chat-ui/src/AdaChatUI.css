@@ -1503,7 +1503,7 @@ body, html {
   font-size: 16px;
   line-height: 1.6;
   color: #dddddd;
-  margin-right:15vw;
+  
 }
 
 .chat-divider {
@@ -2032,6 +2032,7 @@ body, html {
     background-color: #444;
     margin: 50px 0 0 0;
     padding: 0;
+    opacity: 0.4;
   }
 
   /* Rest of your mobile styles */
