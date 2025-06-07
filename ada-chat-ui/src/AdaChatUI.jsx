@@ -823,7 +823,7 @@ export default function AdaChatUI() {
   const fileInputRef = useRef(null);
   const chatContainerRef = useRef(null);
   const dropdownRef = useRef(null);
- 
+  const [isLoading, setIsLoading] = useState(false);
   const [inputFocused, setInputFocused] = useState(false);
   const [resetRequested, setResetRequested] = useState(false);
   const handleClear = () => {
@@ -837,24 +837,38 @@ export default function AdaChatUI() {
     setResetRequested(false);
   }
 }, [resetRequested]);
+//   const handleSend = () => {
+//     if (!message.trim()) return;
+//     setChatHistory([...chatHistory, { question: message,
+//           answer:
+//       "Quantum gravity is a field of theoretical physics that seeks to unify general relativity, which describes gravity as the curvature of spacetime, with quantum mechanics, which governs the behavior of particles and forces at tiny scales. Because these two theories are fundamentally incompatible in extreme conditions like black holes and the early universe, quantum gravity aims to provide a single framework that accounts for quantum effects in the gravitational field, ultimately offering a more complete picture of the universe at both the smallest and largest scales."}])
+//     setMessage('');
+//   };
   const handleSend = () => {
-    if (!message.trim()) return;
-    setChatHistory([...chatHistory, { question: message,
-          answer:
-      "Quantum gravity is a field of theoretical physics that seeks to unify general relativity, which describes gravity as the curvature of spacetime, with quantum mechanics, which governs the behavior of particles and forces at tiny scales. Because these two theories are fundamentally incompatible in extreme conditions like black holes and the early universe, quantum gravity aims to provide a single framework that accounts for quantum effects in the gravitational field, ultimately offering a more complete picture of the universe at both the smallest and largest scales."}])
-    setMessage('');
-  };
+  if (!message.trim()) return;
+
+  setChatHistory([...chatHistory, { question: message, answer: '' }]);
+  setIsLoading(true);
+  setMessage('');
+
+  setTimeout(() => {
+    setChatHistory(prev =>
+      prev.map((msg, idx) =>
+        idx === prev.length - 1
+          ? { ...msg, answer: 'Quantum gravity is a field of theoretical physics that seeks to unify general relativity, which describes gravity as the curvature of spacetime, with quantum mechanics, which governs the behavior of particles and forces at tiny scales. Because these two theories are fundamentally incompatible in extreme conditions like black holes and the early universe, quantum gravity aims to provide a single framework that accounts for quantum effects in the gravitational field, ultimately offering a more complete picture of the universe at both the smallest and largest scales.' }
+          : msg
+      )
+    );
+    setIsLoading(false);
+  }, 2000); // Simulate 2 seconds delay
+};
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') handleSend();
   };
   
 
-//   const handleClear = () => {
-//         setChatHistory([]);
-//         setMessage('');
-//         setInputFocused(false); // Add this to reset focus state
-//         };
+ 
   const handleUploadClick = () => fileInputRef.current.click();
 
   useEffect(() => {
@@ -882,95 +896,7 @@ export default function AdaChatUI() {
       return () => document.removeEventListener('mousedown', handler);
     }
   }, [showDropdown]);
-//   return (
-//   <div className="ada-wrapper">
-//     <div className="status-bar">
-//     <div className="sleft">
-//         <span className="active">active:</span>
-//         <span className="model-name">{selectedModel}</span>
-//     </div>
-//     <div className="model-type">
-//         {modelOptions.find(m => m.name === selectedModel)?.tag}
-//     </div>
-//     </div>
-
-
-//     <div className="chat-box">
-//       <div className="chat-scroll" ref={chatContainerRef}>
-//         {chatHistory.map((msg, index) => (
-//           <div className="chat-msg" key={index}>
-//             <h3>{msg.question}</h3>
-//             <hr className="chat-divider" />
-//             <p>{msg.answer}</p>
-//           </div>
-//         ))}
-//       </div>
-
-//       <div className="chat-input-container">
-//         <input
-//           className={`chat-input ${chatHistory.length === 0 ? 'large-placeholder' : ''}`}
-//           placeholder={chatHistory.length === 0 ? "I'm Ada, Ask me Anything" : "Ask anything"}
-//           value={message}
-//           onChange={(e) => setMessage(e.target.value)}
-//           onKeyDown={handleKeyDown}
-//         />
-
-//         <div className="chat-actions">
-//           {/* LEFT SECTION */}
-//           <div className="phani1">
-//             <button className="upload-button" onClick={handleUploadClick}>
-//               <Plus size={16} />
-//             </button>
-//             <input type="file" ref={fileInputRef} style={{ display: 'none' }} />
-
-//             <div className="dropdown" ref={dropdownRef}>
-//               <button type="button" onClick={() => setShowDropdown(!showDropdown)}>
-//                 <DottedBoxIcon /> Select model 
-//               </button>
-
-//               {showDropdown && (
-//                 <div className={`dropdown-content ${isAbove ? 'above' : ''}`}>
-//                   {modelOptions.map((model, idx) => (
-//                     <label
-//                       key={idx}
-//                       className="model-option"
-//                       onClick={() => {
-//                         if (model.name !== 'more models...') {
-//                           setSelectedModel(model.name);
-//                           setShowDropdown(false);
-//                         }
-//                       }}
-//                     >
-//                       <div style={{ display: 'flex', alignItems: 'center' }}>
-//                         <div className={`big-radio ${selectedModel === model.name ? 'selected' : ''}`} />
-//                         <span>{model.name}</span>
-//                       </div>
-//                       {model.tag && <span className="model-tag">{model.tag}</span>}
-//                     </label>
-//                   ))}
-//                 </div>
-//               )}
-//             </div>
-//           </div>
-
-//           {/* RIGHT SECTION */}
-//           <div className="phani2">
-//             <button className="clear-chat" onClick={handleClear}>
-//               Clear Chat
-//             </button>
-//             <button className="send-btn" onClick={handleSend}>
-//               <img
-//                 src="https://i.postimg.cc/02fSf4Q2/send.png"
-//                 alt="Send"
-//                 className="send-icon"
-//               />
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-// );
+ 
 
 return (
     <div className="ada-wrapper">
@@ -992,13 +918,25 @@ return (
         </div>
       <div className="chat-box">
         <div className="chat-scroll" ref={chatContainerRef}>
-          {chatHistory.map((msg, index) => (
+          {/* {chatHistory.map((msg, index) => (
             <div className="chat-msg" key={index}>
               <h3>{msg.question}</h3>
               <hr className="chat-divider" />
               <p>{msg.answer}</p>
             </div>
-          ))}
+          ))} */}
+        {chatHistory.map((msg, index) => (
+        <div className="chat-msg" key={index}>
+            <h3>{msg.question}</h3>
+            <hr className="chat-divider" />
+            {index === chatHistory.length - 1 && isLoading ? (
+            <div className="spinner"></div>
+            ) : (
+            <p>{msg.answer}</p>
+            )}
+        </div>
+        ))}
+
         </div>
 
         <div className="chat-input-container">
